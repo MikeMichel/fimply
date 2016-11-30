@@ -1,0 +1,18 @@
+version: "v1"
+project: "fimply"
+services:
+  frontend:
+    nginx:
+      image: "mikemichel/fimply"
+      instances: 1
+      mem: 128
+      domain: "sloppy.mmbash.de"
+      ports: 80
+      healthchecks:
+        - path: "/" 
+          type: "HTTP" 
+          timeout: 3
+          interval: 3
+          max_consecutive_failures: 3
+          grace_period_seconds: 3
+
